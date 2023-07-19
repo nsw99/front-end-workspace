@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시맨틱 태그</title>
+</head>
+<body>
+
+    <h2>레이아웃 1 : div</h2>
+    <div id="header">
+        <h1>LOGO</h1>
+        <!-- 메가 커피 사이트의 경우 -->
+        <div id="gnb">
+            GNB(Global Navigation Bar)
+        </div>
+    
+    </div>
+    <!-- mule 사이트의 경우 -->
+    <div id="gnb">
+        GNB(Global Navigation Bar)
+    </div>
+
+
+    <div id="main">
+        <div id="main_content">
+            <div id="main_image">
+                Main Image
+            </div>
+            <div id="main_cont_wrap">
+                <div class="content">
+                    <h2>Title 1</h2>
+                    <p>content 1</p>
+                </div>
+                <div class="content">
+                    <h2>Title 2</h2>
+                    <p>content 2</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="side_bar">
+            LNB(Local Navigation Bar)
+        </div>
+    
+
+    </div>
+
+    <div id="footer">
+        Footer
+    </div>
+        
+
+
+<br>
+------------------------------------------------------------------
+<!-- 가로부터 쪼개고 세로쪼개자 -->
+<!-- header main section footer 많이쓰고 나머지는 div -->
+    <h2>레이아웃 2 : Semantic Tag</h2>
+    <header>
+        <h1>LOGO</h1>
+    </header>
+  
+    <!-- mule 사이트의 경우 -->
+    <div>
+        GNB(Global Navigation Bar)
+    </div>
+
+
+    <main>
+        <div id="main_content">
+            <section id="main_image">
+                Main Image
+            </section>
+
+
+            <section id="main_cont_wrap">
+                
+                <article>
+                    <h2>Title 1</h2>
+                    <p>content 1</p>
+                </article>
+
+                <article>
+                    <h2>Title 2</h2>
+                    <p>content 2</p>
+                </article>
+
+            </section>
+
+
+        </div>
+
+        <aside>
+            LNB(Local Navigation Bar)
+        </aside>
+    
+
+    </main>
+
+    <footer>
+        Footer
+    </footer>
+        
+
+
+
+</body>
+</html>
