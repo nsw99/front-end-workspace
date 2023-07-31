@@ -7,6 +7,7 @@
 - [반응형 웹](#반응형-웹)
 - [플렉스 박스](#flexflexible-box-flexbox)
 - [그리드](#grid)
+
 ## CSS(Cascading Style Sheet)
 
 - 웹 페이지의 표현(디자인)을 나타내는 언어
@@ -417,6 +418,7 @@ font: font-style font-variant font-weight font-size/line-height font-family;
 - clip : 영역을 넘어가는 텍스트를 자른다.
 - ellipsis : 말 줄임으로 잘린 텍스트를 표현한다.
 
+<br>
 
 # 색상 및 배경 스타일
 
@@ -427,7 +429,7 @@ font: font-style font-variant font-weight font-size/line-height font-family;
 ### 색상 이름 표기법
 
 - 영문으로 색상 이름을 표시하는 방법
-- 모든 브라우저에서 표현할 수 있는 색상을 웹 안전 색상(Web Safe Colors)w
+- 모든 브라우저에서 표현할 수 있는 색상을 웹 안전 색상(Web Safe Colors)
 - 216가지
 
 ### 16진수 표기법
@@ -439,7 +441,7 @@ font: font-style font-variant font-weight font-size/line-height font-family;
 ### rgb/rgba 표기법
 
 - rgb 표기법은 16진수 표기법과 다르게 10진수로 Red, Green, Blue를 표시
-- rgba 표기법은 rgb에 불투명도 값을 추가로 지정(0은 완전 투명, 1은 완전 불투명)
+- rgba 표기법은 rgb에 불투명도 값을 추가로 지정 (0은 완전 투명, 1은 완전 불투명)
 
 ```css
 rgb(red(0~255), green(0~255), blue(0~255));
@@ -449,8 +451,8 @@ rgba(red(0~255), green(0~255), blue(0~255), alpha(0~1));
 ### hsl/hsla 표기법
 
 - hsl 표기법은 앞에서부터 색상(Hue), 채도(Saturation), 밝기(Brightness)를 표시
-- hsla 표기법은 hsl에 불투명도 값을 추가로 지정(0은 완전 투명, 1은 완전 불투명)
-- 색상(Hue)은 색상환으로 표쇠(0, 360 빨간색, 120 초록색, 240 파란색)
+- hsla 표기법은 hsl에 불투명도 값을 추가로 지정 (0은 완전 투명, 1은 완전 불투명)
+- 색상(Hue)은 색상환으로 표시 (0, 360 빨간색, 120 초록색, 240 파란색)
 - 채도는 %로 표시 (0%는 회색톤, 100%는 순색)
 - 밝기는 %로 표시 (0%는 가장 어둡고, 100%는 가장 밝다.)
 
@@ -464,31 +466,31 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 배경색을 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     background-color: 색상;
 }
 ```
+
 ## background-clip
 
 - 배경색의 범위를 지정하는 속성
 
 ```css
 선택자 {
-    background-clip : border-box or padding-box
+    background-clip : border-box or padding-box or content-box;
 }
 ```
 
-- border-box : 테두리(border)까지 적용(기본값)
+- border-box : 테두리(border)까지 적용 (기본값)
 - padding-box : 테두리를 뺀 패딩(padding) 범위까지 적용
 - content-box : 내용(content) 부분에만 적용
-
 
 ## background-image
 
 - 배경에 이미지를 설정하는 속성
 
 ```css
-선택자{
+선택자 {
     background-image: url('이미지주소');
 }
 ```
@@ -498,25 +500,23 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 배경 이미지 반복 여부를 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     background-repeat: repeat or repeat-x or repeat-y or no-repeat;
 }
-
 ```
-- repeat : 배경 이미지가 가득 찰 때까지 가로와 세로로 반복(기본값)
+- repeat : 배경 이미지가 가득 찰 때까지 가로와 세로로 반복 (기본값)
 - repeat-x : 배경 이미지를 가로로 반복
 - repeat-y : 배경 이미지를 세로로 반복
-- **no-repeat** : 배경 이미지를 한 번만 출력하고 반복x
+- **no-repeat** : 배경 이미지를 한 번만 출력하고 반복하지 않는다.
 
 ## background-size
 
 - 배경 이미지 크기를 조절하는 속성
 
 ```css
-선택자{
+선택자 {
     background-size: auto or contain or cover or 크기 or 백분율;
 }
-
 ```
 
 - auto : 원래 배경 이미지 크기만큼 표시 (기본값)
@@ -530,41 +530,38 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 배경 이미지가 표시되는 위치를 조정하는 속성
 
 ```css
-선택자{
+선택자 {
     background-position: 수평위치 수직위치;
 }
 ```
-
 - 수평 위치 : left, center, right, 크기값(px), 백분율로 표시
-- 수직 위치 : top, center, bottom, 크기값(px), 백분율로 표시 
+- 수직 위치 : top, center, bottom, 크기값(px), 백분율로 표시
 
 ## background-origin
 
 - 배경 이미지를 배치할 때 기준을 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     background-origin: border-box or padding-box or content-box;
 }
 ```
 
 - border-box : 테두리(border)가 기준
-- padding-box : 테두리를 뺀 패딩(padding)이 기준 (기본값)
+- padding-box : 테두리를 뺀 패딩(padding)이 기준(기본값)
 - content-box : 내용(content)이 기준
-
 
 ## background-attachment
 
 - 웹 페이지가 위아래로 움직여도 배경 이미지는 움직이지 않고 고정하는 속성
 
 ```css
-선택자{
+선택자 {
     background-attachment: scroll or fixed;
 }
-
 ```
 
-- scroll : 화면 스크롤과 함께 배경 이미지도 스크롤(기본값)
+- scroll : 화면 스크롤과 함께 배경 이미지도 스크롤 (기본값)
 - **fixed** : 화면이 스크롤 되더라도 배경 이미지는 고정
 
 ## background
@@ -572,10 +569,9 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 배경 스타일 속성을 한 번에 지정할 수 있는 속성
 
 ```css
-선택자{
+선택자 {
     background: image repeat attachment position clip origin size;
 }
-
 ```
 
 # 레이아웃 스타일
@@ -592,21 +588,21 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - height : 높이 지정
 
 ```css
-선택자{
-    width : 크기 or 백분율 or auto;
-    height : 크기 or 백분율 or auto;
+선택자 {
+    width: 크기 or 백분율 or auto;
+    height: 크기 or 백분율 or auto;
 }
 ```
 
 - 크기(px)나 백분율(%)로 지정
-- auto : 박스 모델의 너비와 높이 값이 콘텐츠에 따라 자동 결정(기본값)
+- auto : 박스 모델의 너비와 높이 값이 콘텐츠에 따라 자동 결정 (기본값)
 
 ## display
 
 - 블록 레벨 요소를 인라인 레벨 요소로 변경하거나 인라인 레벨 요소를 블록 레벨 요소로 변경할 수 있는 속성
 
 ```css
-선택자{
+선택자 {
     display: none or block or inline or inline-block or ...;
 }
 ```
@@ -623,10 +619,9 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - margin은 요소와 요소 사이의 여백
 
 ```css
-선택자{
+선택자 {
     padding[-위치] : 크기 or 백분율 or auto;
     margin[-위치] : 크기 or 백분율 or auto;
-    
 }
 ```
 - 위치 : top, right, left, bottom으로 지정
@@ -638,11 +633,10 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 테두리 스타일을 지정하는 속성
 
 ```css
-선택자{
-    border-style: none or.....or solid;
+선택자 {
+    border-style: none or..... or solid;
 }
 ```
-
 - none : 테두리가 나타나지 않는다. (기본값)
 - dashed : 테두리를 짧은 선으로 표시
 - dotted : 테두리를 점선으로 표시
@@ -655,7 +649,7 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 
 ```css
 선택자 {
-    border[-위치]-width: 크기 or thick or medium or thin;
+    border[-위치]-width : 크기 or thick or medium or thin;
 }
 ```
 
@@ -664,18 +658,18 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 테두리의 색상을 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     border[-위치]-color: 색상;
 }
 ```
 
 ## border
+
 - 테두리의 두께, 스타일, 색상을 한 번에 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     border: 두께 스타일 색상;
-
 }
 ```
 
@@ -685,10 +679,11 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 테두리 모서리의 두 방향과 반지름 값을 사용해서 표기
 
 ```css
-선택자{
-    border[-위치-위치]-radius: 크기 or 백분열;
+선택자 {
+    border[-위치-위치]-radius: 크기 or 백분율;
 }
 ```
+
 ## 포지셔닝
 
 - CSS를 이용해서 여러 요소를 원하는 위치에 적절하게 배치하는 것
@@ -698,11 +693,11 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 요소의 너비와 높이의 기준을 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     box-sizing: content-box or border-box;
 }
 ```
-- content-box : 오소의 너비와 높이를 콘텐츠를 기준으로 지정
+- content-box : 요소의 너비와 높이를 콘텐츠를 기준으로 지정 (기본값)
 - border-box : 요소의 너비와 높이를 테두리를 기준으로 지정
 
 ## float, clear
@@ -710,7 +705,7 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - float 속성은 요소의 위치를 왼쪽이나 오른쪽으로 배치하는 속성
 
 ```css
-선택자{
+선택자 {
     float : left or right or none;
 }
 ```
@@ -719,24 +714,25 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - right : 요소를 오른쪽에 배치
 - none : 요소를 어느 쪽으로도 배치하지 않는다.
 
-
 * float 속성을 사용해 요소를 배치하면 다음 요소에 영향을 미치는데 이를 초기화시키는 속성이 clear 속성
 
 ```css
-선택자{
+선택자 {
     clear: left or right or none or both;
 }
 ```
-## positon
+
+## position
+
 - 웹 문서 안에서 요소들을 자유롭게 배치하는 속성
 
 ```css
-선택자{
+선택자 {
     position: static or relative or absolute or fixed;
 }
 ```
 
-- static : 문서의 흐름에 맞추어 요소를 배치한다.(기본값)
+- static : 문서의 흐름에 맞추어 요소를 배치한다. (기본값)
 - **relative** : 이전 요소에 연결해 배치하면서 위치를 지정하여 요소를 배치
 - **absolute** : 원하는 위치를 지정하여 요소를 배치
 - **fixed** : 지정한 위치에 고정하여 요소를 배치
@@ -744,19 +740,18 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 위치는 top, bottom, left, right로 지정할 수 있다.
 
 ## visibility
+
 - 요소를 화면에 보이거나 보이지 않게 하는 속성
 
 ```css
-선택자{
-    visibility : visible or hidden or collapse;
+선택자 {
+    visibility: visible or hidden or collapse;
 }
 ```
 
-- visible : 요소를 표시(기본값)
+- visible : 요소를 표시 (기본값)
 - **hidden** : 요소를 감춘다. 단, 크기는 유지하기 때문에 공간은 차지한다.
-- collaspe : 표의 행, 열, 행 그룹 등에서 지정하면 서로 겹치도록 지정한다. 그 외의 영역에서
-사용하면 hidden처럼 처리된다.
-
+- collapse : 표의 행, 열, 행 그룹 등에서 지정하면 서로 겹치도록 지정한다. 그 외의 영역에서 사용하면 hidden처럼 처리된다.
 
 ## z-index
 
@@ -765,42 +760,41 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 무조건 맨 위에 표시해야 하는 경우 큰 값으로 지정하기도 한다.
 
 ```css
-선택자{
+선택자 {
     z-index: 값;
 }
-``` 
+```
+
 <br>
 
 [위로 이동](#목차)
+
 # 반응형 웹
 
 - 구간 별 페이지 제작 : pc, tablet, mobile
 - viewport : 스마트폰 화면에서 실제 내용이 표시되는 영역
 
-
 ```html
-<meta name="viewport" content="속성1=값1,속성2=값2,...">
+<meta name="viewport" content="속성1=값1, 속성2=값2, ...">
 ```
 
-- width : 뷰포트 너비(device-width or 크기)
+- width : 뷰포트 너비 (device-width or 크기)
 - height : 뷰포트 높이 (device-height or 크기)
-- user-scalable : 확대/축소 가능 여부 (yes or no, 기본값 : yes)
-- initial-scale : 초기 확대/축소 값 (1 ~10, 기본값 : 1)
-- minimum-scale : 최소 확대/축소 값 (0 ~ 10, 기본값 : 0.25)
-- maximum-scale : 최대 확대/축소 값 (0 ~ 10, 기본값 : 1.6)
+- user-scalable : 확대/축소 가능 여부 (yes or no, yes : 기본값)
+- initial-scale : 초기 확대/축소 값 (1 ~ 10, 1 : 기본값)
+- minimum-scale : 최소 확대/축소 값 (0 ~ 10, 0.25 : 기본값)
+- maximum-scale : 최대 확대/축소 값 (0 ~ 10, 1.6 : 기본값)
 
-
-## 미디어 쿼리 (Media Queries)
+## 미디어 쿼리(Media Queries)
 
 - 사이트에 접속하는 장치에 따라 특정한 CSS 스타일을 적용
 
-
 ```css
-@media 미디어유형 [and 조건]....{
+@media 미디어유형 [and 조건] ... {
 
 }
 
-@media screen and (min-width: 200px) and (max-width: 360px){
+@media screen and (min-width: 200px) and (max-width: 360px) {
     ...
 }
 
@@ -811,7 +805,9 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 
 <br>
 
-# Flex(Flexible box, Flexbox)
+[위로 이동](#목차)
+
+# Flex(Flexible Box, Flexbox)
 
 - CSS 레이아웃 모델로 화면 크기에 따라 레이아웃의 배치나 크기를 조절할 때 편리하게 사용
 
@@ -828,8 +824,8 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - Flex 컨테이너에 display:flex;를 적용하면서 시작
 
 ```css
-.container{
-    display:flex;
+.container {
+    display: flex;
 }
 ```
 
@@ -839,11 +835,10 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 아이템들이 배치되는 메인 축의 방향을 결정하는 속성
 
 ```css
-.container{
-    flex-direction: row or column or row-reverse or column-reverse
+.container {
+    flex-direction: row or column or row-reverse or column-reverse;
 }
 ```
-
 - row : 왼쪽부터 순차적으로 배치 (기본값)
 - row-reverse : 오른쪽으로부터 순차적으로 배치
 - column : 위에서 아래로 순차적으로 배치
@@ -854,7 +849,7 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 아이템 줄바꿈을 어떻게 할지 결정하는 속성
 
 ```css
-.container{
+.container {
     flex-wrap: nowrap or wrap or wrap-reverse;
 }
 ```
@@ -868,7 +863,7 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - flex-direction과 flex-wrap을 한꺼번에 지정할 수 있는 단축 속성
 
 ```css
-.container{
+.container {
     flex-flow : row wrap;
 
     flex-direction: row;
@@ -881,16 +876,15 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 메인축 방향으로 정렬
 
 ```css
-.container{
-    justify-content: flex-start or flex-end or center or space-between or space-around
-    or space-evenly
+.container {
+    justify-content: flex-start or flex-end or center or space-between or space-around or space-evenly;
 }
 ```
 
 - flex-start : 아이템들을 시작점으로 정렬 (기본값)
 - flex-end : 아이템들을 끝점으로 정렬
 - center : 아이템들을 가운데로 정렬
-- space-between : 아이템들 사이에 균일한 가격 생성
+- space-between : 아이템들 사이에 균일한 간격 생성
 - space-around : 각 아이템의 좌우에 균일한 간격 생성
 - space-evenly : 아이템들의 사이와 양 끝에 균일한 간격 생성
 
@@ -904,85 +898,85 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 }
 ```
 
-- stretch : 아이템들을 위아래 방향으로 끝까지 늘림(기본값)
+- stretch : 아이템들을 위아래 방향으로 끝까지 늘림 (기본값)
 - flex-start : 아이템들을 위쪽으로 정렬
 - flex-end : 아이템들을 아래쪽으로 정렬
-- center : 아이템들을 중간 정렬w
+- center : 아이템들을 중간 정렬
 - baseline : 아이템들을 텍스트 베이스라인 기준으로 정렬
 
 ## align-content
 - 여러 행 정렬
-- flex-wrap: wrap; 이 설정된 상태에서, 아이템들의 행이 2줄 이상인 경우 수직축 방향 정렬을 결정하는 속성
+- flex-wrap: wrap;이 설정된 상태에서, 아이템들의 행이 2줄 이상인 경우 수직축 방향 정렬을 결정하는 속성
 
 ```css
-.container{
+.container {
     align-content: stretch or flex-start or flex-end or center or space-between or space-around or space-evenly;
 }
 ```
 
 ## flex-basis
 
-- flex 아이템의 기본 크기 설정 (flex-direction이 row일때는 너비, column일 때는 높이)
+- flex 아이템의 기본 크기 설정 (flex-direction이 row일 때는 너비, column일 때는 높이)
 
 ```css
-.item{
+.item {
     flex-basis : auto or 0 or 크기;
 }
 ```
+
 ## flex-grow
-- flex-basis의 값보다 커질 수 있는지 결정하는 속성
+
+- flex-basis의 값보다 커질 수 있는지를 결정하는 속성
+
 ```css
-.tiem{
-    flex-grow:0 or 숫자;
+.item {
+    flex-grow: 0 or 숫자;
 }
 ```
 
 ## flex-shrink
 
-- flex-grow와 쌍을 이루는 속성으로, flex-basis 값보다 작아질 수 있는 지를 결정하는 속성
+- flex-grow와 쌍을 이루는 속성으로, flex-basis 값보다 작아질 수 있는지를 결정하는 속성
 
 ```css
-.itme{
+.item {
     flex-shrink: 1 or 숫자;
 }
 ```
 
 ## flex
 
-- flex-grow, flex-shrink, flex-basis를 한번에 쓸 수 있는 단축 속성
+- flex-grow, flex-shrink, flex-basis를 한 번에 쓸 수 있는 단축 속성
 
 ```css
-.item{
-    flex: 1; /*f flex-grow: 1; flex-shrink: 1 flex-basis: 0;*/
-    flex: 1 1 auto; /*f flex-grow: 1; flex-shrink: 1 flex-basis: auto;*/
-    flex: 1 500px; /*f flex-grow: 1; flex-shrink: 1 flex-basis: 500;*/
-}
-
-## align-self
-
-- 특정 아이템만 정렬을 따로 정렬하고자 할 떄 사용하는 속성
-
-
-```css
-.item{
-    align-self: flex-start or flex-end or center or baseline or stretch;
-
+.item {
+    flex: 1; /* flex-grow: 1; flex-shrink: 1; flex-basis: 0; */
+    flex: 1 1 auto; /* flex-grow: 1; flex-shrink: 1; flex-basis: auto;*/
+    flex: 1 500px; /* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
 }
 ```
 
+## align-self
+
+- 특정 아이템만 정렬을 따로 정렬하고자 할 때 사용하는 속성
+
+```css
+.item {
+    align-self: flex-start or flex-end or center or baseline or stretch;
+}
+```
 
 ## order
 
 - item들의 순서를 바꿀 수 있는 속성
 
 ```css
-.item{
-    order 숫자;
-    
-}
-
+order : 0 or 숫자;
 ```
-[위로이동](#목차)
+
+<br>
+
+[위로 이동](#목차)
 
 # Grid
 
@@ -995,12 +989,13 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
     <div class="item"></div>
 </div>
 ```
+
 ## display: grid;
 
 - Grid 컨테이너에 display: grid;를 적용하면서 시작
 
 ```css
-.container{
+.container {
     display: grid;
 }
 ```
@@ -1010,38 +1005,29 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 컨테이너에 Grid 트랙(행 또는 열)의 크기들을 지정해주는 속성
 
 ```css
-.container{
+.container {
     grid-template-columns: 200px 500px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-columns: 200px 1fr;
-    grid-template-columns: 100px  200px auto;
+    grid-template-columns: 100px 200px auto;
 }
 ```
+
 ### auto-fill, auto-fit
 
 - column의 개수를 미리 정하지 않고 설정된 너비가 허용하는 한 최대한 셀을 채움
 - auto-fill은 셀의 개수가 모자라면 공간이 남지만, auto-fit은 채움
+
 ## row-gap, column-gap, gap
+
 - 그리드 셀 사이의 간격을 설정하는 속성
-- 예쩐 브라우저에서는 grid-gap 사용
+- 예전 브라우저에서는 grid-gap 사용
 
 ```css
-.container{
-    row-gap:10px;
-    column-gap:20px;
-
-    gap : 10px 20px;
-}
-```
-## row-gap, column-gap, gap
-- 그리드 셀 사이의 간격을 설정하는 속성
-- 예쩐 브라우저에서는 grid-gap 사용
-
-```css
-.container{
-    row-gap:10px;
-    column-gap:20px;
+.container {
+    row-gap: 10px;
+    column-gap: 20px;
 
     gap : 10px 20px;
 }
@@ -1052,19 +1038,18 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 통제를 벗어난 위치에 있는 트랙의 크기를 지정하는 속성
 
 ```css
-.container{
+.container {
     grid-auto-columns: 200px;
     grid-auto-rows: 20%;
 }
 ```
 
-
 ## grid-column-start, grid-column-end, grid-column, grid-row-start, grid-row-end, grid-row
- 
-- 각셀의 영역을 지정하는 속성
+
+- 각 셀의 영역을 지정하는 속성
 
 ```css
-.item{
+.item {
     grid-column: 1/4;
     grid-column-start: 1;
     grid-column-end: 4;
@@ -1074,16 +1059,16 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
     grid-row-end: 4;
 }
 ```
+
 ## justify-items, align-items
 
 - 셀들의 정렬을 지정하는 속성
 
 ```css
-.container{
+.container {
     justify-items: start;
     justify-items: center;
     justify-items: end;
-
 }
 ```
 
@@ -1092,28 +1077,26 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 각 하나의 셀의 정렬을 지정하는 속성
 
 ```css
-.item{
+.item {
     justify-self: start;
     justify-self: center;
     justify-self: end;
 }
 ```
 
-
 # 변형
 
 ## transform
 
-- 사용자의 동작에 따라 크기나 형태가 변형되는 것
-
+- 사용자의 동작에 따라 크기나 형태가 변경되는 것
 
 ```css
-선택자{
+선택자 {
     transform: 변형함수();
 }
 ```
 * 변형함수(3d, X, Y, Z)
-- scale : 지정한 크기만큼 확대 / 축소하는 함수
+- scale : 지정한 크기만큼 확대/축소하는 함수
 - rotate : 지정한 각도만큼 회전시키는 함수
 - skew : 지정한 각도만큼 비틀어 왜곡하는 함수
 - translate : x축, y축, z축 방향으로 이동시키는 함수
@@ -1123,21 +1106,22 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - 변형의 기준점을 변경하는 속성
 
 ```css
-선택자{
+선택자 {
     transform-origin: x축 y축 z축;
 }
 ```
 
 ## transition
 
-- 전환 효과
+- 전환효과
 
 ```css
-선택자{
+선택자 {
     transition: 변환속성 애니메이션시간;
 }
 ```
-- 변환속성 : 변환할 속성(all로 지정되면 모든 속성 영향) 
+
+- 변환속성 : 변환할 속성 (all로 지정되면 모든 속성 영향)
 - 애니메이션시간 : 애니메이션 재생 시간(duration) 지정
 
 ## animation
@@ -1145,10 +1129,10 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 - CSS의 속성값 변화를 애니메이션화
 
 ```css
-@keyframes 애니메이션이름{
-    from{ 시작 프레임 설정}
-    to{ 끝 프레임 설정}
-    %{ 단위로 지정 가능}
+@keyframes 애니메이션이름 {
+    from { 시작 프레임 설정 }
+    to { 끝 프레임 설정 }
+    % { 단위로 지정 가능 }
 }
 
 선택자 {
@@ -1156,23 +1140,22 @@ hsla(Hue(0~360), Saturation(0~100%), Brightness(0~100%), alpha(0~1));
 }
 ```
 
-- animation-name: 설정된 keyframe 지정
+- animation-name : 설정된 keyframe 지정
 - animation-duration : 실행 시간 지정
-- animation-iteration-count: 반복 횟수 지정
+- animation-iteration-count : 반복 횟수 지정
 - animation-timing-function : 속도 형태 지정
 - animation-delay : 대기 시간 지정
 - animation-direction : 진행 형태 지정
-
 
 ## backface-visibility
 
 - 요소가 회전하여 뒷면이 보일 경우 표시 여부를 지정하는 속성
 
 ```css
-선택자{
+선택자 {
     backface-visibility: visible or hidden;
 }
 ```
 
-- visible : 뒷면이 보이도록 표시( 기본값 )
+- visible : 뒷면이 보이도록 표시 (기본값)
 - hidden : 뒷면이 보이지 않도록 한다.

@@ -7,47 +7,50 @@
 </head>
 <body>
     <h1>배열</h1>
+
     <script>
-    const arr = [1,2,3,4,5];
+    const arr = [1, 2, 3, 4, 5];
     console.log(arr);
+
     // 3만 가지고 오려면?
-    console.log(arr[2]);   
+    console.log(arr[2]);
 
     // 배열에서 마지막 값을 가져오려면?
     console.log(arr[arr.length-1]);
 
-    arr.push(6); //  맨뒤 123456
-    arr.unshift(7); // 맨앞 7123456
-    arr.splice(2,0,8); // 71823456
+    arr.push(6); // 123456
+    arr.unshift(7); // 7123456
+    arr.splice(2, 0, 8); // 71823456
     console.log(arr);
-    
+
+    arr.sort();
+    console.log(arr);
+
     arr.reverse();
     console.log(arr);
 
-    arr.pop(); //8765432
-    arr.shift(); //765432
-    arr.splice(arr.indexOf(5),1);//76432
+    arr.pop(); // 8765432
+    arr.shift(); // 765432
+    arr.splice(arr.indexOf(5), 1); // 76432
     console.log(arr);
     </script>
 
+    <!-- 배열과 문자열 -->
     <script>
-        const strArr = 'hello, javascript!'.split('');
-        console.log(strArr);
-        const str= strArr.join('');
-        console.log(str);
+    const strArr = 'Hello, JavaScript!'.split('');
+    console.log(strArr);
+
+    const str = strArr.join('');
+    console.log(str);
     </script>
 
     <script>
-        const arr2 = [];
-        arr2[0] = 111;
-        arr2[1] = 2222;
-        // arr2.push(1);
-        // arr2.push(3);
-        console.log(arr2);
-
-        
+    const arr2 = [];
+    arr2[0] = 111;
+    arr2[1] = 2222;
+    // arr2.push(1);
+    // arr2.push(3);
+    console.log(arr2);
     </script>
-
-
 </body>
 </html>
