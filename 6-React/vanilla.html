@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Total clicks : <span>0</span></h1>
+    <button onclick="count()">Click!</button>
+
+    <script>
+  const resultElement = document.querySelector("span");
+  
+  const count = () =>{
+    resultElement.innerHTML = parseInt(resultElement.innerHTML) + 1;
+  };
+    </script>
+</body>
+</html>
