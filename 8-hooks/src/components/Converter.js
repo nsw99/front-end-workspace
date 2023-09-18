@@ -42,7 +42,7 @@ const Converter = () => {
 };
 const Btn = ({click, message, backgroundColor}) => {
     return (
-        <button style={{ backgroundColor, color: "white", padding: "10px 20px", border: "none", borderRadius: "10px" }}
+        <button style={{ backgroundColor, color: "white", padding: "10px 20px", border: "none", borderRadius: "10px"}}
         onClick={click}>{message}</button>);
 }
 export default Converter;   
