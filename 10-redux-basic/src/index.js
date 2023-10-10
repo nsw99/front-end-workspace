@@ -9,7 +9,7 @@ import rootReducer from "./store";
 const store = createStore(rootReducer);
 // Provider 컴포넌트를 사용하여 프로젝트에 리덕스 적용
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render(    
     <Provider store={store}>
         <App />
     </Provider>

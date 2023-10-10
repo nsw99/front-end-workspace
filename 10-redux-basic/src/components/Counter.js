@@ -15,6 +15,20 @@ const Counter = () => {
     </div>
   );
 };
+// const mapStateToProps = (state) => ({
+//   counter: state.counter.counter,
+// });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   increase: () => {
+//     console.log("increase");
+//     dispatch(increase());
+//   },
+//   decrease: () => {
+//     console.log("decrease");
+//     dispatch(decrease());
+//   },
+// });
 
 
 // connect(mapStateToProps, mapDispatchToProps)(연동할 컴포넌트)

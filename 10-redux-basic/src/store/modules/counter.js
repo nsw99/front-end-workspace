@@ -4,7 +4,7 @@ import { createAction, handleActions } from "redux-actions";
 const INCREASE = "counter/INCREASE";
 const DECREASE = "counter/DECREASE";
 
-// 액션 생성 함수(action creator) : 액션 객체를 만들어 주는 함수
+// 액션 생성 함수(action creator) : 액션 객체를 만들어 주는 함수    
 // export const increase = () => ({ type: INCREASE });
 // export const decrease = () => ({ type: DECREASE });
 
