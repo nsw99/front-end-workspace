@@ -1,146 +1,177 @@
-import { useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-const Home = ({ list, deleteMessage }) => {
-  const onClick = (e) => {
-    deleteMessage(e.target.id);
-  }
-  return (
-    <>
-      <h1>Messages</h1>
-      <table>
+import { Head } from './inc'
+import { Main } from './page/index.js'
 
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Writer</th>
-            <th>Message</th>
-            <th>Writer Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+import axios from 'axios';
+import queryString from 'query-string';
 
-        <tbody>
-          {list.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.writer}</td>
-              <td>{item.message}</td>
-              <td>{item.write_Date}</td>
-              <td>
-                <button onClick={onClick} id={item.id}>Delete</button>
-              </td>
-            </tr>
-          ))}
-
-        </tbody>
-
-      </table>
-    </>
-  )
-};
-
-const Create = ({ addMessage }) => {
-
-  const [id, setId] = useState("");
-  const [writer, setWriter] = useState("");
-  const [message, setMessage] = useState("");
-  const [write_Date, setWrite_Date] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    if (id === "" || writer === "" || message === "" || write_Date === "") {
-      alert("모든 입력값을 반드시 입력해야 합니다");
-      return;
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      login : false,
+      admin : false,
+      user_ip : "",
+      signup : false,
+      login_modal : false,
+      list_data : [],
+      list_page : 1,
+      list_limit : 10,
+      list_all_page : [],
+      list_search : "",
+      category : "",
     }
-
-    addMessage(id, writer, message, write_Date);
-    setId("");
-    setWriter("");
-    setMessage("");
-    setWrite_Date("");
-  }
-  return (
-    <>
-      <h1>Create Message</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <input type="text" placeholder='Input message id' value={id} onChange={(e) => setId(e.target.value)} />
-        </div>
-
-        <div>
-          <input type="text" placeholder='Input message writer' value={writer} onChange={(e) => setWriter(e.target.value)} />
-        </div>
-
-        <div>
-          <input type="text" placeholder='Input message content' value={message}
-            onChange={(e) => setMessage(e.target.value)} />
-        </div>
-
-        <div>
-          <label>출시일 :</label>
-          <input type="date" value={write_Date} onChange={(e) => setWrite_Date(e.target.value)} />
-        </div>
-        <input type="submit" value="Add message" />
-      </form>
-    </>
-  )
-};
-
-const App = () => {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      writer: "Writer 1",
-      message: "Message1",
-      write_Date: "2022-01-01",
-    },
-    {
-      id: 2,
-      writer: "Writer 2",
-      message: "Message 2",
-      write_Date: "2022-02-01"
-    },
-    {
-      id: 3,
-      writer: "Writer 3",
-      message: "Message 3",
-      write_Date: "2022-03-01"
-    }
-  ]);
-
-  const addMessage = (id, writer, message, write_Date) => {
-
-    const result = messages.some((item) => { return item.id === parseInt(id); });
-    if (result) {
-      alert("중복되는 id는 입력할 수 없습니다.");
-      return;
-    }
-
-    const newMessages = { id: parseInt(id), writer, message, write_Date };
-    setMessages([...messages, setMessages]);
-  };
-  const deleteMessage = (id) => {
-    const newList = messages.filter((item) => item.id !== parseInt(id));
-    setMessages(newList);
   }
 
-  return (
-    <BrowserRouter>
-      <ul>
-        <li>
-          <Link to="/">List</Link>
-        </li>
-        <li>
-          <Link to="/create">add new message</Link>
-        </li>
-      </ul>
-      <Routes>
-        <Route path="/" element={<Home list={messages} deleteMessage={deleteMessage} />} />
-        <Route path='/create' element={<Create addMessage={addMessage} />} />
-      </Routes>
-    </BrowserRouter>)
-};
+  componentDidMount() {
+    this._getListData();
+
+    if(sessionStorage.login && sessionStorage.IP) {
+      this.setState({ 
+        login : JSON.parse(sessionStorage.login).id, 
+        admin : JSON.parse(sessionStorage.login).admin,
+        user_ip : JSON.parse(sessionStorage.IP)
+      })
+    }
+  }
+
+  _setPage = function() {
+    if(sessionStorage.page) {
+      this.setState({ list_page : Number(sessionStorage.page) })
+      return Number(sessionStorage.page);
+    }
+
+    this.setState({ list_page : 1 })
+    return 1;
+  }
+
+  _changePage = (el) => {
+    this.setState({ list_page : el })
+    sessionStorage.setItem('page', el);
+
+    return this._getListData();
+  }
+
+  _getListData = async function() {
+    const { list_limit } = this.state;
+    const list_pages = this._setPage();
+
+    let categorys = '';
+    if(sessionStorage.getItem('category')) {
+      categorys = sessionStorage.getItem('category')
+    }
+
+    let search = "";
+    if(queryString.parse(this.props.location.search)) {
+      search = queryString.parse(this.props.location.search).search;
+    }
+
+    // Board 테이블 데이터 전체 수
+    const total_cnt = await axios('/get/board_cnt', {
+      method : 'POST',
+      headers: new Headers(),
+      data : { search : search, category : categorys }
+    });
+
+    // 데이터 가져오기
+    const total_list = await axios('/get/board', {
+      method : 'POST',
+      headers: new Headers(),
+      data : { 
+        limit : list_limit, 
+        page : list_pages, 
+        search : search, 
+        category : categorys }
+    })
+
+    // 전체 페이지 수 구하기
+    let page_arr = [];
+
+    for(let i = 1; i <= Math.ceil(total_cnt.data.cnt / list_limit); i++) {
+      page_arr.push(i);
+    }
+
+    this.setState({ list_data : JSON.stringify(total_list.data), 
+                    list_all_page : page_arr, 
+                    list_search : search })
+  }
+
+  _login = (data) => {
+    sessionStorage.setItem('login', JSON.stringify(data.suc))
+    sessionStorage.setItem('IP', JSON.stringify(data.ip))
+
+    this.setState({ login : JSON.parse(sessionStorage.login).id,  
+                    admin : JSON.stringify(data.suc).admin,
+                    user_ip : JSON.parse(sessionStorage.IP)
+    })
+    return window.location.reload()
+  }
+
+  _logout = () => {
+    this.setState({ login : false, admin : false, user_ip : "" })
+
+    sessionStorage.removeItem('login')
+    sessionStorage.removeItem('IP')
+  }
+
+  _toggleModal = (boolean) => {
+    this.setState({ login_modal : boolean })
+  }
+  
+  // 카테고리 변동
+  _changeCatgory = (target) => {
+    sessionStorage.setItem('category', target);
+    this.setState({ category : target });
+
+    return this._getListData();
+  }
+
+  render() {
+    const { 
+      login, admin, user_ip, login_modal,
+      list_data, list_all_page, list_search, list_page
+    } = this.state;
+
+    const { 
+      _login, _logout, _toggleModal, _getSearch, _changePage,
+      _changeCatgory
+    } = this;
+    
+    return(
+    <div>
+      <div>
+        <Head 
+          login = {login}
+          admin = {admin}
+          user_ip = {user_ip}
+          _login = {_login}
+          _logout = {_logout}
+          login_modal= {login_modal}
+          _toggleModal = {_toggleModal}
+        />
+      </div>
+
+      <div>
+        <Main
+          admin = {admin}
+          user_ip = {user_ip}
+          login = {login}
+          login_modal= {login_modal}
+          _toggleModal = {_toggleModal}
+          _getSearch = {_getSearch}
+          list_data = {list_data}
+          list_all_page = {list_all_page} 
+          list_search = {list_search}
+          list_page = {list_page}
+          _changePage = {_changePage}
+          _changeCatgory = {_changeCatgory}
+        />
+      </div>
+    </div>
+    )
+  }
+}
 
 export default App;
